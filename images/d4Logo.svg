@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46666"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="d4 logo - Transparent No Background.svg"
+   inkscape:export-filename="C:\Users\rohil\Pictures\Inkscape Projects\d4 logo\d4 logo - Transparent No Background.png"
+   inkscape:export-xdpi="96.489326"
+   inkscape:export-ydpi="96.489326">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="394.70726"
+     inkscape:cy="225.20644"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-global="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Background"
+     transform="translate(-53.132004,-119.60748)" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-53.132004,-119.60748)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="129.64583"
+       y="151.19048"
+       id="text839"><tspan
+         sodipodi:role="line"
+         id="tspan837"
+         x="129.64583"
+         y="151.19048"
+         style="stroke-width:0.264583" /></text>
+    <g
+       id="g837"
+       transform="matrix(1.466186,0,0,1.466186,-150.96555,-27.908638)"
+       style="fill:#000000;fill-opacity:1">
+      <path
+         id="path865"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:62.3303px;line-height:1.25;font-family:'Vermin Verile';-inkscape-font-specification:'Vermin Verile';fill:#000000;fill-opacity:1;stroke:#ff0808;stroke-width:1.558;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 219.72286,122.18449 c -0.64047,0.66743 -31.74617,37.6721 -32.2807,38.18992 h 22.7557 v 9.54722 l 9.525,12.72997 v -22.27719 h 2.91093 v -12.72997 h -2.91093 z m -8.30389,22.67665 c 0.001,0.33191 -0.0159,7.40787 0,7.68429 0,0 -6.224,-0.0208 -6.54895,-0.0181 0.10755,-0.10419 6.42,-7.5319 6.54895,-7.6662 z"
+         sodipodi:nodetypes="ccccccccccccccc" />
+      <path
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:62.3303px;line-height:1.25;font-family:'Vermin Verile';-inkscape-font-specification:'Vermin Verile';fill:#000000;fill-opacity:1;stroke:#ff0808;stroke-width:1.558;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 144.2117,120.95344 11.64218,11.67164 h 22.7552 l 4.7625,5.30665 v 9.54722 l -4.7625,5.30665 h -15.08176 v -15.91996 l -9.52552,8.99583 v 18.06661 h 30.42812 l 8.99632,-10.61331 v -21.21886 l -8.99632,-11.14247 z"
+         id="path839"
+         sodipodi:nodetypes="ccccccccccccccc" />
+    </g>
+  </g>
+</svg>
