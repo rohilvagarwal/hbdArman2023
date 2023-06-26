@@ -1,8 +1,7 @@
-import math
-
 from ProjectConstants import *
 import sys
 from Button import Button
+from ChipperInvaders import ChipperInvaders
 import time
 
 #pygame.init()
@@ -16,13 +15,14 @@ scaled_d4 = pygame.transform.scale(d4, (50, 50))
 
 #game variables
 GAME_OVER = False
+chipperInvaders = ChipperInvaders(300, 300, 50)
 
 #game states: menu, kinematics, circularMotion, aboutMe
 gameState = "menu"
 
 
 def menu_button(centerX, centerY, text):
-	return Button(centerX=centerX, centerY=centerY, width=230, height=50, textSize=30, borderSize=10, text=text)
+	return Button(centerX=centerX, centerY=centerY, width=250, height=50, textSize=30, borderSize=10, text=text)
 
 
 def return_to_menu_button():
@@ -47,15 +47,21 @@ def draw_menu():
 	#draw title
 	draw_text_center(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 70, "Arman Gaming")
 
-	chippers = menu_button(200, 2 * SCREEN_HEIGHT / 6, "Chippers")
+	chippers = menu_button(200, 2 * SCREEN_HEIGHT / 6, "Chipper Invaders")
 	exit = menu_button(200, 5 * SCREEN_HEIGHT / 6, "Exit")
 
 	#draw button and check if clicked
 	if chippers.draw_and_check_click(screen):
-		gameState = "chippers"
+		gameState = "Chipper Invaders"
 
 	if exit.draw_and_check_click(screen):
 		GAME_OVER = True
+
+def draw_chipper_invaders():
+	screen.fill(backgroundColor)
+	draw_d4()
+
+	chipperInvaders.draw_static(screen)
 
 #game start
 draw_menu()
@@ -68,6 +74,8 @@ start_time = time.time()
 while not GAME_OVER:
 	if gameState == "menu":
 		draw_menu()
+	if gameState == "Chipper Invaders":
+		draw_chipper_invaders()
 
 
 	for event in pygame.event.get():

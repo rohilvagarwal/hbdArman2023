@@ -1,4 +1,5 @@
 import pygame
+import math
 
 pygame.init()
 
@@ -40,6 +41,26 @@ def ifClicked():
 
 	return False
 
+def rotate_surface(surface, angle, x, y):
+	#rotate surface around pivot point
+	rotated_surface = pygame.transform.rotate(surface, angle)
+
+	#make pivot point center
+	pivotX = x
+	pivotY = y
+	rect = rotated_surface.get_rect()
+	rect.center = pivotX, pivotY
+
+	return rotated_surface, rect
+
+def degrees_to_mouse(centerX, centerY):
+	# Get the mouse position
+	mouse_x, mouse_y = pygame.mouse.get_pos()
+
+	# Calculate the angle between the arrow and the mouse position
+	dx = mouse_x - centerX
+	dy = mouse_y - centerY
+	return math.degrees(math.atan2(-dy, dx))
 
 #10, 20, 25, 30, 70
 font10 = pygame.font.SysFont("jost700", 10)
