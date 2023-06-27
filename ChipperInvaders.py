@@ -1,4 +1,5 @@
 from ProjectConstants import *
+from Sprite import Sprite
 
 
 class ChipperInvaders:
@@ -17,6 +18,8 @@ class ChipperInvaders:
 		self.cookieRadius = 25
 		self.cookie = pygame.image.load('images/cookie.png').convert_alpha()
 		self.scaled_cookie = pygame.transform.scale(self.cookie, (2 * self.cookieRadius, 2 * self.cookieRadius)).convert_alpha()
+
+		self.cookies = []
 
 	def change_angle(self):
 		self.angle = degrees_to_mouse(self.originalCenterX, self.originalCenterY)
@@ -39,3 +42,13 @@ class ChipperInvaders:
 		rotatedSurface, center = rotate_surface(arrowLayer, self.angle, self.currentCenterX, self.currentCenterY)
 
 		screen.blit(rotatedSurface, center)
+
+		if ifClicked():
+			self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, 50, self.angle))
+
+		for cookie in self.cookies:
+			cookie.draw_static(screen)
+			print(cookie.get_centerX)
+			print(cookie.get_centerY)
+
+		self.cookies = [cookie for cookie in self.cookies if 0 < cookie.get_centerX < SCREEN_WIDTH and 0 < cookie.get_centerY < SCREEN_HEIGHT]
