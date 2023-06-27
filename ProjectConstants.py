@@ -41,6 +41,15 @@ def ifClicked():
 
 	return False
 
+
+def blit_center(screen, image, coordinates):
+	image_rect = image.get_rect()
+
+	blit_x = coordinates[0] - (image_rect.width // 2)
+	blit_y = coordinates[1] - (image_rect.height // 2)
+
+	screen.blit(image, (blit_x, blit_y))
+
 def rotate_surface(surface, angle, x, y):
 	#rotate surface around pivot point
 	rotated_surface = pygame.transform.rotate(surface, angle)

@@ -10,12 +10,12 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Main Menu")
 
 #image imports
-d4 = pygame.image.load('images/d4Logo.svg')
-scaled_d4 = pygame.transform.scale(d4, (50, 50))
+d4 = pygame.image.load('images/d4Logo.svg').convert_alpha()
+scaled_d4 = pygame.transform.scale(d4, (50, 50)).convert_alpha()
 
 #game variables
 GAME_OVER = False
-chipperInvaders = ChipperInvaders(300, 300, 50)
+chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 50)
 
 #game states: menu, kinematics, circularMotion, aboutMe
 gameState = "menu"
@@ -57,11 +57,14 @@ def draw_menu():
 	if exit.draw_and_check_click(screen):
 		GAME_OVER = True
 
+
 def draw_chipper_invaders():
 	screen.fill(backgroundColor)
 	draw_d4()
+	return_to_menu_button()
 
 	chipperInvaders.draw_static(screen)
+
 
 #game start
 draw_menu()
@@ -76,7 +79,6 @@ while not GAME_OVER:
 		draw_menu()
 	if gameState == "Chipper Invaders":
 		draw_chipper_invaders()
-
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
