@@ -1,6 +1,26 @@
 from ProjectConstants import *
 
 
+def remove_collisions(sprites: list["Sprite"]):
+	numCollisions = 0
+
+	num_sprites = len(sprites)
+	for i in range(num_sprites):
+		for j in range(i + 1, num_sprites):
+			if sprites[i].collides_with(sprites[j]):
+				# Remove sprites[i]
+				sprites.remove(sprites[i])
+				num_sprites -= 1
+
+				# Remove sprites[j]
+				sprites.remove(sprites[j - 1])
+				num_sprites -= 1
+
+				numCollisions += 1
+
+	return numCollisions
+
+
 class Sprite:
 	def __init__(self, image, centerX, centerY, velocity, angle, hitboxShape: str, hitboxScale):
 		self.image = image
@@ -25,16 +45,21 @@ class Sprite:
 	def get_centerY(self):
 		return self.centerY
 
+	def get_hitbox_shape(self):
+		return self.hitboxShape
+
 	def set_velocity_and_angle(self, velocity, angle):
 		self.velocity = velocity
 		self.angle = angle
 		self.xVelocity = math.cos(math.radians(self.angle)) * self.velocity
 		self.yVelocity = -math.sin(math.radians(self.angle)) * self.velocity
 
-	def draw_static(self, screen):
+	def get_next_frame(self):
 		self.centerX += self.xVelocity / FPS
 		self.centerY += self.yVelocity / FPS
 
+	def draw_static(self, screen):
+		self.get_next_frame()
 		blit_center(screen, self.image, (self.centerX, self.centerY))
 
 	def get_hitbox(self):
@@ -49,16 +74,16 @@ class Sprite:
 			# Return hitbox coordinates for a circle
 			return self.centerX, self.centerY, self.radius
 
-	def collides_with(self, other_sprite):
+	def collides_with(self, other_sprite: "Sprite"):
 		self_hitbox = self.get_hitbox()
 		other_hitbox = other_sprite.get_hitbox()
 
-		if self.hitboxShape == 'rectangle' and other_sprite.hitbox_shape == 'rectangle':
+		if self.hitboxShape == 'rectangle' and other_sprite.get_hitbox_shape() == 'rectangle':
 			# Check for collision between two rectangles
 			if self_hitbox[2] >= other_hitbox[0] and self_hitbox[0] <= other_hitbox[2] and \
 					self_hitbox[3] >= other_hitbox[1] and self_hitbox[1] <= other_hitbox[3]:
 				return True
-		elif self.hitboxShape == 'circle' and other_sprite.hitbox_shape == 'circle':
+		elif self.hitboxShape == 'circle' and other_sprite.get_hitbox_shape() == 'circle':
 			# Check for collision between two circles
 			distance_squared = (self_hitbox[0] - other_hitbox[0]) ** 2 + (self_hitbox[1] - other_hitbox[1]) ** 2
 			if distance_squared <= (self_hitbox[2] + other_hitbox[2]) ** 2:
