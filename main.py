@@ -15,7 +15,7 @@ scaled_d4 = pygame.transform.scale(d4, (50, 50)).convert_alpha()
 
 #game variables
 GAME_OVER = False
-chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 50)
+chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 200)
 
 #game states: menu, kinematics, circularMotion, aboutMe
 gameState = "menu"

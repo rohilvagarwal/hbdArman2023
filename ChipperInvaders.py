@@ -19,7 +19,7 @@ class ChipperInvaders:
 		self.cookie = pygame.image.load('images/cookie.png').convert_alpha()
 		self.scaled_cookie = pygame.transform.scale(self.cookie, (2 * self.cookieRadius, 2 * self.cookieRadius)).convert_alpha()
 
-		self.cookies = []
+		self.cookies: list[Sprite] = []
 
 	def change_angle(self):
 		self.angle = degrees_to_mouse(self.originalCenterX, self.originalCenterY)
@@ -44,11 +44,10 @@ class ChipperInvaders:
 		screen.blit(rotatedSurface, center)
 
 		if ifClicked():
-			self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, 50, self.angle))
+			self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, self.velocity, self.angle, "circle", 0.8))
 
 		for cookie in self.cookies:
 			cookie.draw_static(screen)
-			print(cookie.get_centerX)
-			print(cookie.get_centerY)
+			cookie.draw_hitbox(screen)
 
-		self.cookies = [cookie for cookie in self.cookies if 0 < cookie.get_centerX < SCREEN_WIDTH and 0 < cookie.get_centerY < SCREEN_HEIGHT]
+		self.cookies = [cookie for cookie in self.cookies if 0 < cookie.get_centerX() < SCREEN_WIDTH and 0 < cookie.get_centerY() < SCREEN_HEIGHT]
