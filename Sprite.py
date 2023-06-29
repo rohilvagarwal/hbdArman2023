@@ -1,24 +1,24 @@
 from ProjectConstants import *
 
 
-def remove_collisions(sprites: list["Sprite"]):
-	numCollisions = 0
+def remove_collisions(list1: list["Sprite"], list2: list["Sprite"]):
+	num_collisions = 0
 
-	num_sprites = len(sprites)
-	for i in range(num_sprites):
-		for j in range(i + 1, num_sprites):
-			if sprites[i].collides_with(sprites[j]):
-				# Remove sprites[i]
-				sprites.remove(sprites[i])
-				num_sprites -= 1
+	for item1 in list1:
+		for item2 in list2:
+			if item1.collides_with(item2):
+				# Remove colliding items from list1 and list2
+				list1.remove(item1)
+				list2.remove(item2)
+				num_collisions += 1
 
-				# Remove sprites[j]
-				sprites.remove(sprites[j - 1])
-				num_sprites -= 1
+	return num_collisions
 
-				numCollisions += 1
 
-	return numCollisions
+def resize_image(pic, maxDimension):
+	maxNum = max(pic.get_width(), pic.get_height())
+
+	return pygame.transform.scale(pic, (pic.get_width() * maxDimension // maxNum, pic.get_height() * maxDimension // maxNum)).convert()
 
 
 class Sprite:

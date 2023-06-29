@@ -15,14 +15,10 @@ scaled_d4 = pygame.transform.scale(d4, (50, 50)).convert_alpha()
 
 #game variables
 GAME_OVER = False
-chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 200)
+chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 500, 200)
 
 #game states: menu, kinematics, circularMotion, aboutMe
 gameState = "menu"
-
-
-def menu_button(centerX, centerY, text):
-	return Button(centerX=centerX, centerY=centerY, width=250, height=50, textSize=30, borderSize=10, text=text)
 
 
 def return_to_menu_button():
@@ -47,8 +43,8 @@ def draw_menu():
 	#draw title
 	draw_text_center(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 70, "Arman Gaming")
 
-	chippers = menu_button(200, 2 * SCREEN_HEIGHT / 6, "Chipper Invaders")
-	exit = menu_button(200, 5 * SCREEN_HEIGHT / 6, "Exit")
+	chippers = Button(centerX=SCREEN_WIDTH / 2, centerY=SCREEN_HEIGHT / 2, width=350, height=100, textSize=70, borderSize=30, text="Start Boi")
+	exit = Button(centerX=SCREEN_WIDTH / 2, centerY=SCREEN_HEIGHT - 30, width=100, height=40, textSize=25, borderSize=10, text="Exit")
 
 	#draw button and check if clicked
 	if chippers.draw_and_check_click(screen):
