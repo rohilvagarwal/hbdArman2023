@@ -125,7 +125,16 @@ class ChipperInvaders:
 				self.reset_all_objects()
 
 		elif self.state == "Boss Level":
-			self.spriteBoss.draw_static(screen)
+			if len(self.trolls) < 5:
+				self.trolls.append(
+					Sprite(self.scaledTroll, random.randint(100, SCREEN_WIDTH - 100), random.randint(100, SCREEN_HEIGHT - 100), 50, 0, "rectangle",
+						   1))
+
+			self.trolls = [troll for troll in self.trolls if 0 < troll.get_centerX() < SCREEN_WIDTH and 0 < troll.get_centerY() < SCREEN_HEIGHT]
+
+			for troll in self.trolls:
+				troll.randomly_move()
+				troll.draw_static(screen)
 
 			if len(self.armans) < 10:
 				self.armans.append(
@@ -138,6 +147,8 @@ class ChipperInvaders:
 			for arman in self.armans:
 				arman.randomly_move()
 				arman.draw_static(screen)
+
+			self.spriteBoss.draw_static(screen)
 
 			draw_text_center(screen, SCREEN_WIDTH / 2, 30, 30, f"Chipper Invaders: {self.state}")
 			self.change_angle()
