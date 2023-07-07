@@ -1,12 +1,14 @@
 from ProjectConstants import *
-from Sprite import Sprite, remove_collisions, resize_image
+from Sprite import Sprite, remove_collisions, resize_image, remove_collisions_from_list_1
 import random
 import time
+from pygame import mixer
+from Button import Button
 
 
 class ChipperInvaders:
 	def __init__(self, centerX, centerY, cookieSpeed, armanSpeed):
-		self.state = "Level 5"  #Title Screen 1, Level 1, Fail
+		self.state = "Title Screen 1"  #Title Screen 1, Level 1, Level 2, Level 3, Level 4, Level 5, Boss Menu, Boss Level, Done, Fail
 		self.originalCenterX = centerX
 		self.originalCenterY = centerY
 		self.currentCenterX = centerX
@@ -43,6 +45,18 @@ class ChipperInvaders:
 		self.score = 0
 		self.strikes = 0
 
+		boss = pygame.image.load('images/boss.jpg').convert()
+		self.scaledBoss = resize_image(boss, SCREEN_HEIGHT - 200)
+		self.spriteBoss = Sprite(self.scaledBoss, SCREEN_WIDTH - 50, SCREEN_HEIGHT / 2, -25, 0, "rectangle", 1)
+
+		self.restartButton = Button(centerX=SCREEN_WIDTH - 75, centerY=SCREEN_HEIGHT - 50, width=100, height=50, textSize=30, borderSize=10,
+									text="Reset")
+
+	def draw_reset_button(self, screen):
+		if self.restartButton.draw_and_check_click(screen):
+			self.reset_all_objects()
+			self.state = "Title Screen 1"
+
 	def set_state(self, state):
 		self.state = state
 
@@ -54,6 +68,8 @@ class ChipperInvaders:
 		self.armans = []
 
 		self.trolls = []
+
+		self.spriteBoss.set_centerX_and_centerY(SCREEN_WIDTH - 50, SCREEN_HEIGHT / 2)
 
 		try:
 			for x in range(int(self.state[-1])):
@@ -99,7 +115,78 @@ class ChipperInvaders:
 				self.state = "Level 1"
 				self.reset_all_objects()
 
+		elif self.state == "Boss Menu":
+			draw_text_center(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 70, 70, "are u ready for boss?")
+			draw_text_center(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 30, 30, "lets go to boss, boss")
+			draw_text_center(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 40, 25, "Click to continue")
+
+			if ifClicked():
+				self.state = "Boss Level"
+				self.reset_all_objects()
+
+		elif self.state == "Boss Level":
+			self.spriteBoss.draw_static(screen)
+
+			if len(self.armans) < 10:
+				self.armans.append(
+					Sprite(self.allArmanImages[random.randint(0, 2)], random.randint(100, SCREEN_WIDTH - 100),
+						   random.randint(100, SCREEN_HEIGHT - 100), 50, 0, "rectangle",
+						   1))
+
+			self.armans = [arman for arman in self.armans if 0 < arman.get_centerX() < SCREEN_WIDTH and 0 < arman.get_centerY() < SCREEN_HEIGHT]
+
+			for arman in self.armans:
+				arman.randomly_move()
+				arman.draw_static(screen)
+
+			draw_text_center(screen, SCREEN_WIDTH / 2, 30, 30, f"Chipper Invaders: {self.state}")
+			self.change_angle()
+
+			blit_center(screen, self.scaled_cookie, (self.originalCenterX, self.originalCenterY))
+
+			#draw arrow
+			arrowLayer = pygame.Surface((200, 200)).convert_alpha()  #center is on center of mass
+			arrowLayer.fill((0, 0, 0, 0))
+
+			pygame.draw.rect(arrowLayer, objectsColor, (100 + self.cookieRadius + 10, 97, self.arrowLength, 6))
+			pygame.draw.polygon(arrowLayer, objectsColor, ((100 + self.cookieRadius + 10 + self.arrowLength, 90),
+														   (100 + self.cookieRadius + 10 + self.arrowLength + 10, 100),
+														   (100 + self.cookieRadius + 10 + self.arrowLength, 110)))
+
+			rotatedSurface, center = rotate_surface(arrowLayer, self.angle, self.currentCenterX, self.currentCenterY)
+
+			screen.blit(rotatedSurface, center)
+
+			#if mouse is clicked, add a new cookie to cookie list
+			if ifClicked():
+				self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, self.cookieSpeed, self.angle, "circle", 0.8))
+				cookieSound = mixer.Sound("sounds/gol.mp3")
+				cookieSound.play()
+
+			#draw all cookies
+			for cookie in self.cookies:
+				cookie.draw_static(screen)
+
+			#remove cookies that are colliding
+			self.score += remove_collisions_from_list_1(self.cookies, self.spriteBoss)
+
+			if self.score == 69:
+				self.state = "Done"
+
+			self.spriteBoss.get_next_frame()
+
+			#remove sprites that are past boundaries of screen
+			self.cookies = [cookie for cookie in self.cookies if 0 < cookie.get_centerX() < SCREEN_WIDTH and 0 < cookie.get_centerY() < SCREEN_HEIGHT]
+
+			if self.originalCenterX + 159 > self.spriteBoss.get_centerX():
+				self.state = "Fail"
+				self.reset_all_objects()
+
+			draw_text_left(screen, SCREEN_WIDTH - 130, 100, 25, "Score: " + str(self.score))
+
 		elif self.state == "Done":
+			self.draw_reset_button(screen)
+
 			if len(self.trolls) < 5:
 				self.trolls.append(
 					Sprite(self.scaledTroll, random.randint(100, SCREEN_WIDTH - 100), random.randint(100, SCREEN_HEIGHT - 100), 50, 0, "rectangle",
@@ -124,6 +211,8 @@ class ChipperInvaders:
 				self.state = "Level 1"
 
 		else:
+			draw_text_center_alpha(screen, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 200, self.state[-1], 50)
+
 			self.armanSpeed = self.originalArmanSpeed * int(self.state[-1])
 
 			draw_text_center(screen, SCREEN_WIDTH / 2, 30, 30, f"Chipper Invaders: {self.state}")
@@ -161,6 +250,8 @@ class ChipperInvaders:
 			#if mouse is clicked, add a new cookie to cookie list
 			if ifClicked():
 				self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, self.cookieSpeed, self.angle, "circle", 0.8))
+				cookieSound = mixer.Sound("sounds/gol.mp3")
+				cookieSound.play()
 
 			#draw all cookies
 			for cookie in self.cookies:
@@ -210,6 +301,6 @@ class ChipperInvaders:
 				elif self.state[-1] == "4":
 					self.state = "Level 5"
 				elif self.state[-1] == "5":
-					self.state = "Done"
+					self.state = "Boss Menu"
 
 				self.reset_all_objects()

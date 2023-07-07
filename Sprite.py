@@ -1,5 +1,6 @@
 from ProjectConstants import *
 import random
+import numpy
 
 
 def remove_collisions(list1: list["Sprite"], list2: list["Sprite"]):
@@ -9,9 +10,25 @@ def remove_collisions(list1: list["Sprite"], list2: list["Sprite"]):
 		for item2 in list2:
 			if item1.collides_with(item2):
 				# Remove colliding items from list1 and list2
+				cookieSound = mixer.Sound("sounds/boom.mp3")
+				cookieSound.play()
 				list1.remove(item1)
 				list2.remove(item2)
 				num_collisions += 1
+
+	return num_collisions
+
+
+def remove_collisions_from_list_1(list1: list["Sprite"], boss: "Sprite"):
+	num_collisions = 0
+
+	for item1 in list1:
+		if item1.collides_with(boss):
+			cookieSound = mixer.Sound("sounds/boom.mp3")
+			cookieSound.play()
+			# Remove colliding items from list1 and list2
+			list1.remove(item1)
+			num_collisions += 1
 
 	return num_collisions
 
@@ -45,6 +62,10 @@ class Sprite:
 
 	def get_centerY(self):
 		return self.centerY
+
+	def set_centerX_and_centerY(self, centerX, centerY):
+		self.centerX = centerX
+		self.centerY = centerY
 
 	def get_hitbox_shape(self):
 		return self.hitboxShape
