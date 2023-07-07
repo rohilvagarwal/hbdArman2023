@@ -20,6 +20,10 @@ chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 500, 200)
 #game states: menu, kinematics, circularMotion, aboutMe
 gameState = "menu"
 
+#background sound
+mixer.music.load("sounds/trollion.mp3")
+mixer.music.play(-1)
+
 
 def return_to_menu_button():
 	global gameState

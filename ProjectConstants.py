@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import math
 
 pygame.init()
@@ -50,6 +51,7 @@ def blit_center(screen, image, coordinates):
 
 	screen.blit(image, (blit_x, blit_y))
 
+
 def rotate_surface(surface, angle, x, y):
 	#rotate surface around pivot point
 	rotated_surface = pygame.transform.rotate(surface, angle)
@@ -62,6 +64,7 @@ def rotate_surface(surface, angle, x, y):
 
 	return rotated_surface, rect
 
+
 def degrees_to_mouse(centerX, centerY):
 	# Get the mouse position
 	mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -70,6 +73,7 @@ def degrees_to_mouse(centerX, centerY):
 	dx = mouse_x - centerX
 	dy = mouse_y - centerY
 	return math.degrees(math.atan2(-dy, dx))
+
 
 #10, 20, 25, 30, 70
 font10 = pygame.font.SysFont("jost700", 10)

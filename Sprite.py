@@ -1,4 +1,5 @@
 from ProjectConstants import *
+import random
 
 
 def remove_collisions(list1: list["Sprite"], list2: list["Sprite"]):
@@ -105,6 +106,15 @@ class Sprite:
 				return True
 
 		return False
+
+	def randomly_move(self):
+		# Generate random movement values
+		move_x = random.choice([-20, 20])
+		move_y = random.choice([-20, 20])
+
+		# Update centerX and centerY with random movement
+		self.centerX += move_x
+		self.centerY += move_y
 
 	def draw_hitbox(self, screen):
 		hitbox = self.get_hitbox()
