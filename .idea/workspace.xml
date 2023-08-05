@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f8fefe4-9f2a-43ca-ad9b-f4a19a93fa67" name="Changes" comment="hosting online">
-      <change beforePath="$PROJECT_DIR$/ChipperInvaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/ChipperInvaders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/boom.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/gol.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/trollion.mp3" beforeDir="false" />
-    </list>
+    <list default="true" id="2f8fefe4-9f2a-43ca-ad9b-f4a19a93fa67" name="Changes" comment="converting sounds to .ogg" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691246852239</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="converting sounds to .ogg">
+      <created>1691247159446</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691247159446</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,6 +100,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hosting online" />
-    <option name="LAST_COMMIT_MESSAGE" value="hosting online" />
+    <MESSAGE value="converting sounds to .ogg" />
+    <option name="LAST_COMMIT_MESSAGE" value="converting sounds to .ogg" />
   </component>
 </project>

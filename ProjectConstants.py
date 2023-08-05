@@ -76,12 +76,12 @@ def degrees_to_mouse(centerX, centerY):
 
 
 #10, 20, 25, 30, 70
-font10 = pygame.font.SysFont("jost700", 10)
-font20 = pygame.font.SysFont("jost700", 20)
-font25 = pygame.font.SysFont("jost700", 25)
-font30 = pygame.font.SysFont("jost700", 30)
-font70 = pygame.font.SysFont("jost700", 70)
-font200 = pygame.font.SysFont("jost700", 200)
+font10 = pygame.font.Font("fonts/Jost-700-Bold.otf", 10)
+font20 = pygame.font.Font("fonts/Jost-700-Bold.otf", 20)
+font25 = pygame.font.Font("fonts/Jost-700-Bold.otf", 25)
+font30 = pygame.font.Font("fonts/Jost-700-Bold.otf", 30)
+font70 = pygame.font.Font("fonts/Jost-700-Bold.otf", 70)
+font200 = pygame.font.Font("fonts/Jost-700-Bold.otf", 200)
 
 
 def draw_text_center(screen, centerX, centerY, textSize, text):
