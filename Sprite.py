@@ -10,7 +10,7 @@ def remove_collisions(list1: list["Sprite"], list2: list["Sprite"]):
 		for item2 in list2:
 			if item1.collides_with(item2):
 				# Remove colliding items from list1 and list2
-				cookieSound = mixer.Sound("sounds/boom.mp3")
+				cookieSound = mixer.Sound("sounds/boom.ogg")
 				cookieSound.play()
 				list1.remove(item1)
 				list2.remove(item2)
@@ -24,7 +24,7 @@ def remove_collisions_from_list_1(list1: list["Sprite"], boss: "Sprite"):
 
 	for item1 in list1:
 		if item1.collides_with(boss):
-			cookieSound = mixer.Sound("sounds/boom.mp3")
+			cookieSound = mixer.Sound("sounds/boom.ogg")
 			cookieSound.play()
 			# Remove colliding items from list1 and list2
 			list1.remove(item1)

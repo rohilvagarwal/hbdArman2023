@@ -22,7 +22,7 @@ chipperInvaders = ChipperInvaders(100, SCREEN_HEIGHT / 2, 500, 200)
 gameState = "menu"
 
 #background sound
-mixer.music.load("sounds/trollion.mp3")
+mixer.music.load("sounds/trollion.ogg")
 mixer.music.play(-1)
 
 

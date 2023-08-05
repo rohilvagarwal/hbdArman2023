@@ -171,7 +171,7 @@ class ChipperInvaders:
 			#if mouse is clicked, add a new cookie to cookie list
 			if ifClicked():
 				self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, self.cookieSpeed, self.angle, "circle", 0.8))
-				cookieSound = mixer.Sound("sounds/gol.mp3")
+				cookieSound = mixer.Sound("sounds/gol.ogg")
 				cookieSound.play()
 
 			#draw all cookies
@@ -261,7 +261,7 @@ class ChipperInvaders:
 			#if mouse is clicked, add a new cookie to cookie list
 			if ifClicked():
 				self.cookies.append(Sprite(self.scaled_cookie, self.currentCenterX, self.currentCenterY, self.cookieSpeed, self.angle, "circle", 0.8))
-				cookieSound = mixer.Sound("sounds/gol.mp3")
+				cookieSound = mixer.Sound("sounds/gol.ogg")
 				cookieSound.play()
 
 			#draw all cookies
