@@ -41,7 +41,7 @@ def resize_image(pic, maxDimension):
 
 class Sprite:
 	def __init__(self, image, centerX, centerY, velocity, angle, hitboxShape: str, hitboxScale):
-		self.image = image
+		self.image = image.convert_alpha()
 		self.centerX = centerX
 		self.centerY = centerY
 		self.velocity = velocity
