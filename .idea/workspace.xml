@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f8fefe4-9f2a-43ca-ad9b-f4a19a93fa67" name="Changes" comment="converting sounds to .ogg" />
+    <list default="true" id="2f8fefe4-9f2a-43ca-ad9b-f4a19a93fa67" name="Changes" comment="adding fonts to package" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691247159446</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adding fonts to package">
+      <created>1691247714406</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691247714406</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +108,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hosting online" />
     <MESSAGE value="converting sounds to .ogg" />
-    <option name="LAST_COMMIT_MESSAGE" value="converting sounds to .ogg" />
+    <MESSAGE value="adding fonts to package" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding fonts to package" />
   </component>
 </project>

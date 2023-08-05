@@ -6,7 +6,7 @@ class Button:
 		#self.ifMouseDownEarlier = False
 
 		#font
-		self.menuFont = pygame.font.SysFont("jost700", textSize)
+		self.menuFont = pygame.font.Font("fonts/Jost-700-Bold.otf", textSize)
 
 		#text
 		self.buttonText = self.menuFont.render(text, True, textColor)

@@ -96,7 +96,7 @@ def draw_text_center(screen, centerX, centerY, textSize, text):
 	elif textSize == 70:
 		font = font70
 	else:
-		font = pygame.font.SysFont("jost700", textSize)
+		font = pygame.font.Font("fonts/Jost-700-Bold.otf", textSize)
 
 	text = font.render(text, True, textColor)
 	text_rect = text.get_rect(center=(centerX, centerY))
@@ -117,7 +117,7 @@ def draw_text_left(screen, leftX, centerY, textSize, text):
 	elif textSize == 70:
 		font = font70
 	else:
-		font = pygame.font.SysFont("jost700", textSize)
+		font = pygame.font.Font("fonts/Jost-700-Bold.otf", textSize)
 
 	text = font.render(text, True, textColor)
 	text_rect = text.get_rect(left=leftX, centery=centerY)
@@ -140,7 +140,7 @@ def draw_text_center_alpha(screen, centerX, centerY, textSize, text, alpha):
 	elif textSize == 200:
 		font = font200
 	else:
-		font = pygame.font.SysFont("jost700", textSize)
+		font = pygame.font.Font("fonts/Jost-700-Bold.otf", textSize)
 
 	text = font.render(text, True, textColor)
 	text.set_alpha(alpha)
